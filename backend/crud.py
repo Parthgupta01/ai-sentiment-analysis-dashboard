@@ -38,3 +38,21 @@ def get_analytics_summary(db):
         "negative": negative,
         "avg_confidence": avg_confidence
     }
+
+def update_product(db, product_id, name, description):
+    product = db.query(models.Product).filter(models.Product.id == product_id).first()
+    if product:
+        product.name = name
+        product.description = description
+        db.commit()
+        return product
+    return None
+
+
+def delete_product(db, product_id):
+    product = db.query(models.Product).filter(models.Product.id == product_id).first()
+    if product:
+        db.delete(product)
+        db.commit()
+        return True
+    return False

@@ -23,4 +23,5 @@ class Analytics(Base):
     id = Column(Integer, primary_key=True, index=True)
     review_id = Column(Integer, ForeignKey("reviews.id"))
     sentiment = Column(String)
+    emotion =  Column(String)
     confidence = Column(Float)
